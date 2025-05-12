@@ -93,6 +93,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-export default app;
+module.exports = app;
 
 // Start server only after connecting to MongoDB

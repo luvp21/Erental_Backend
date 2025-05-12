@@ -1,6 +1,7 @@
-import dotenv from 'dotenv';
-import connectDB from './db/index.js';
-import app from './app.js';
+const dotenv = require('dotenv');
+const connectDB = require('./config/database.js');
+const app = require('./app.js');
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,4 +19,4 @@ const startServer = async () => {
 
 startServer();
 
-export default app; 
+module.exports = app;
