@@ -4,6 +4,7 @@
   "description": "Backend for EV Rental System",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "dev": "node app.js",
     "build": "echo 'No build step needed for serverless deployment'",
     "vercel-build": "npm run build"
