@@ -28,7 +28,6 @@ const userSchema = new mongoose.Schema({
     },
     qrCode: {
         type: String,
-        unique: true
     },
     drivingLicense: {
         number: {
