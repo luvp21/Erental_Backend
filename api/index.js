@@ -1,15 +1,16 @@
+// api/index.js
 const serverless = require("serverless-http");
-const app = require("../app");
+const app = require("./app");
 const connectDB = require("../config/database");
 
 let isConnected = false;
 
-module.exports = async (req, res) => {
+module.exports.handler = async (event, context) => {
   if (!isConnected) {
     await connectDB();
-    isConnected = true; // Avoid reconnecting on every request
+    isConnected = true;
+    console.log("MongoDB connected.");
   }
-
   const handler = serverless(app);
-  return handler(req, res);
+  return handler(event, context);
 };

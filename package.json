@@ -4,11 +4,9 @@
   "description": "Backend for EV Rental System",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "dev": "node api/app.js",
+    "build": "echo 'No build step needed for serverless deployment'",
+    "vercel-build": "npm run build"
   },
   "jest": {
     "testEnvironment": "node",
