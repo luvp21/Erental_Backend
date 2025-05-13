@@ -4,7 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
-const connectDB = require("../config/database");
+const connectDB = require("./config/database");
 
 dotenv.config();
 const app = express();
@@ -16,15 +16,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Routes
-const authRoutes = require("../routes/auth");
-const userRoutes = require('../routes/userRoutes');
-const vehicleRoutes = require('../routes/vehicle');
-const locationRoutes = require("../routes/location");
-const kycRoutes = require("../routes/kyc");
-const bookingRoutes = require("../routes/booking");
-const pickupRoutes = require("../routes/pickupRoutes");
-const dropoffRoutes = require("../routes/dropoffRoutes");
-const userBookingRoutes = require("../routes/userBooking");
+const authRoutes = require("./routes/auth");
+const userRoutes = require('./routes/userRoutes');
+const vehicleRoutes = require('./routes/vehicle');
+const locationRoutes = require("./routes/location");
+const kycRoutes = require("./routes/kyc");
+const bookingRoutes = require("./routes/booking");
+const pickupRoutes = require("./routes/pickupRoutes");
+const dropoffRoutes = require("./routes/dropoffRoutes");
+const userBookingRoutes = require("./routes/userBooking");
 
 app.use('/api', pickupRoutes);
 app.use('/api', dropoffRoutes);
@@ -50,5 +50,21 @@ app.use((err, req, res, next) => {
         error: err.message,
     });
 });
+
+const PORT = process.env.PORT || 5000;
+
+const startServer = async () => {
+    try {
+        await connectDB();
+        console.log("MongoDB connected successfully");
+        app.listen(PORT, () => {
+            console.log(`Server is running on port: ${PORT}`);
+        });
+    } catch (error) {
+        console.error("Failed to start server:", error);
+    }
+};
+
+startServer();
 
 module.exports = app;
