@@ -4,7 +4,7 @@
   "description": "Backend for EV Rental System",
   "main": "app.js",
   "scripts": {
-    "dev": "node api/app.js",
+    "dev": "node app.js",
     "build": "echo 'No build step needed for serverless deployment'",
     "vercel-build": "npm run build"
   },
@@ -23,6 +23,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "qrcode": "^1.5.4",
+    "semver": "^7.7.2",
     "serverless-http": "^3.2.0",
     "twilio": "^5.5.1"
   },
